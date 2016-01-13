@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +15,7 @@ namespace SOCVR.Slack.BeefBot
         /// <summary>
         /// Fetches the setting that is specified by the Key.
         /// First tries to get the value from an environment variable.
-        /// If it doesn't exist, tries to get the value from the command line arguments.
+        /// If it doesn't exist, tries to get the value from the "settings.txt" file
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
@@ -27,15 +30,18 @@ namespace SOCVR.Slack.BeefBot
 
             var allCommandLineArgs = Environment.GetCommandLineArgs();
 
-            var cmdEntries = allCommandLineArgs
-                .Skip(1)
-                .ToDictionary(x => x.Split('=')[0], x => x.Split('=')[1]);
+            var settingsFilePath = "settings.json";
 
-            var hasCmdEntry = cmdEntries.ContainsKey(key);
-
-            if (hasCmdEntry)
+            if (File.Exists(settingsFilePath))
             {
-                return cmdEntries[key].Parse<T>();
+                var settings = JObject.Parse(File.ReadAllText(settingsFilePath));
+
+                var requestedSettingNode = settings[key];
+
+                if (requestedSettingNode != null)
+                {
+                    return requestedSettingNode.Value<T>();
+                }
             }
 
             throw new Exception("Unable to locate setting.");

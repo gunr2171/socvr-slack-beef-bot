@@ -9,17 +9,11 @@ namespace SOCVR.Slack.BeefBot.Database
 {
     public class DatabaseContext : DbContext
     {
-        private string connectionString;
-
-        public DatabaseContext(string connectionString)
-        {
-            this.connectionString = connectionString;
-        }
-
         public DbSet<BeefEntry> BeefEntries { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            var connectionString = SettingsAccessor.GetSetting<string>("DBConnectionString");
             optionsBuilder.UseNpgsql(connectionString);
         }
 

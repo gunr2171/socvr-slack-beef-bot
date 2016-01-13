@@ -16,6 +16,7 @@ namespace SOCVR.Slack.BeefBot
 
         static void Main(string[] args)
         {
+            var cs = SettingsAccessor.GetSetting<string>("DBConnectionString");
             var botAPIKey = SettingsAccessor.GetSetting<string>("SlackBotAPIKey");
 
             bot.Aliases = new List<string>() { "beef" };
