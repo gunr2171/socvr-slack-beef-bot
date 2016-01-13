@@ -167,9 +167,9 @@
   <ItemGroup>
     <Compile Include="Database\BeefEntry.cs" />
     <Compile Include="Database\DatabaseContext.cs" />
-    <Compile Include="Migrations\20160113020942_InitialMigration.cs" />
-    <Compile Include="Migrations\20160113020942_InitialMigration.designer.cs">
-      <DependentUpon>20160113020942_InitialMigration.cs</DependentUpon>
+    <Compile Include="Migrations\20160113030141_InitialMigration.cs" />
+    <Compile Include="Migrations\20160113030141_InitialMigration.designer.cs">
+      <DependentUpon>20160113030141_InitialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\DatabaseContextModelSnapshot.cs" />
     <Compile Include="Program.cs" />

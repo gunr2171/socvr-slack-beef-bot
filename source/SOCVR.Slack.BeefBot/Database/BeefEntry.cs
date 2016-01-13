@@ -12,8 +12,6 @@ namespace SOCVR.Slack.BeefBot.Database
         [Key]
         public int Id { get; set; }
 
-        public BeefSeverity Severity { get; set; }
-
         [Required]
         public string ReporterUserId { get; set; }
 
@@ -23,12 +21,5 @@ namespace SOCVR.Slack.BeefBot.Database
 
         public DateTimeOffset ReportedOn { get; set; }
         public DateTimeOffset ExpiresOn { get; set; }
-    }
-
-    public enum BeefSeverity
-    {
-        Low = 1,
-        Medium = 2,
-        High = 3
     }
 }

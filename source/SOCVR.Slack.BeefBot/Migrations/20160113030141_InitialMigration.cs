@@ -18,8 +18,7 @@ namespace SOCVR.Slack.BeefBot.Migrations
                     Explination = table.Column<string>(nullable: true),
                     OffendingChatUserId = table.Column<int>(nullable: false),
                     ReportedOn = table.Column<DateTimeOffset>(nullable: false),
-                    ReporterUserId = table.Column<string>(nullable: false),
-                    Severity = table.Column<int>(nullable: false)
+                    ReporterUserId = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {

@@ -31,8 +31,6 @@ namespace SOCVR.Slack.BeefBot.Migrations
                     b.Property<string>("ReporterUserId")
                         .IsRequired();
 
-                    b.Property<int>("Severity");
-
                     b.HasKey("Id");
                 });
         }
