@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using MargieBot;
 using SOCVR.Slack.BeefBot.Responders;
+using SOCVR.Slack.BeefBot.Database;
 
 namespace SOCVR.Slack.BeefBot
 {
@@ -18,6 +19,12 @@ namespace SOCVR.Slack.BeefBot
         {
             var cs = SettingsAccessor.GetSetting<string>("DBConnectionString");
             var botAPIKey = SettingsAccessor.GetSetting<string>("SlackBotAPIKey");
+
+            //inital connection to database
+            using (var db = new DatabaseContext())
+            {
+                db.Database.EnsureCreated();
+            }
 
             bot.Aliases = new List<string>() { "beef" };
             bot.Responders.Add(new AddBeefResponder());

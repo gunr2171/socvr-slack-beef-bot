@@ -11,7 +11,7 @@ namespace SOCVR.Slack.BeefBot.Responders
 {
     class AddBeefResponder : IResponder
     {
-        Regex commandPattern = new Regex(@"(?i)^beef (low|medium|high) (\d+) (.+)?$", RegexOptions.Compiled | RegexOptions.CultureInvariant);
+        Regex commandPattern = new Regex(@"(?i)^beef (low|medium|high) (\d+)(?: (.+))?$", RegexOptions.Compiled | RegexOptions.CultureInvariant);
 
         public bool CanRespond(ResponseContext context)
         {
@@ -23,7 +23,11 @@ namespace SOCVR.Slack.BeefBot.Responders
 
         public BotMessage GetResponse(ResponseContext context)
         {
-            throw new NotImplementedException();
+
+            return new BotMessage
+            {
+                Text = "Acknowledged."
+            };
         }
     }
 }
