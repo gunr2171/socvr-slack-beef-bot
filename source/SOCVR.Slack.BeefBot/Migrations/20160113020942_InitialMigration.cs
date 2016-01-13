@@ -13,7 +13,7 @@ namespace SOCVR.Slack.BeefBot.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Npgsql:Serial", true),
+                        .Annotation("Sqlite:Autoincrement", true),
                     ExpiresOn = table.Column<DateTimeOffset>(nullable: false),
                     Explination = table.Column<string>(nullable: true),
                     OffendingChatUserId = table.Column<int>(nullable: false),

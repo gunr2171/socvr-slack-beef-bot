@@ -14,7 +14,7 @@ namespace SOCVR.Slack.BeefBot.Database
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var connectionString = SettingsAccessor.GetSetting<string>("DBConnectionString");
-            optionsBuilder.UseNpgsql(connectionString);
+            optionsBuilder.UseSqlite(connectionString);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

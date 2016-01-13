@@ -8,7 +8,7 @@ using SOCVR.Slack.BeefBot.Database;
 namespace SOCVR.Slack.BeefBot.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20160113015540_InitialMigration")]
+    [Migration("20160113020942_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
